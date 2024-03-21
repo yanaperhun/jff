@@ -14,13 +14,13 @@ package easy.pointers
  * Output: false
  */
 fun isPalindrome(s: String): Boolean {
-    val trimmed = s.trim().filter { it.isLetter() }.lowercase()
-    if (trimmed.isEmpty()) return true
+    val trimmed = s.trim().filter { it.isLetterOrDigit() }.lowercase()
+    if (trimmed.isEmpty() || trimmed.length == 1) return true
 
     val range = trimmed.length / 2
-
+    val lastIndex = trimmed.length - 1
     for (i in 0..range) {
-        if (trimmed[i] != trimmed[trimmed.length - 1 - i]) {
+        if (trimmed[i] != trimmed[lastIndex - i]) {
             return false
         }
     }
