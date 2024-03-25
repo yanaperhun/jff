@@ -1,4 +1,4 @@
-package easy.pointers
+package mid.pointers
 
 /**
  * Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
@@ -29,8 +29,8 @@ package easy.pointers
  */
 
 fun twoSum(numbers: IntArray, target: Int): IntArray {
-    var range = numbers.size
-    var endIndex = range - 1
+    val range = numbers.size
+    val endIndex = range - 1
     for (i in 0..endIndex) {
         for (j in endIndex downTo i + 1) {
             val sum = numbers[i] + numbers[j]
