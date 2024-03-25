@@ -31,7 +31,9 @@ fun maxArea(height: IntArray): Int {
 
     var biggestArea = 0
     while(startIndex <= endIndex) {
-    //for (i in 0.. range) {
+
+        val startPoint = height[startIndex]
+        val endPoint = height[endIndex]
 
         val widthArea = endIndex - startIndex
         val heightArea = min(height[startIndex], height[endIndex])
@@ -40,13 +42,25 @@ fun maxArea(height: IntArray): Int {
             biggestArea = widthArea * heightArea
         }
 
-        if (height[startIndex] >  height[endIndex]) {
-            endIndex = endIndex.dec()
+        var stepped = false
+        if (height[startIndex] >=  height[endIndex]) {
+            println("==>")
+            while (height[endIndex] <= endPoint && endIndex > startIndex) {
+                stepped = true
+                endIndex = endIndex.dec()
+                if (endIndex > startIndex) break
+                println("dec end index $endIndex")
+            }
         } else {
-            startIndex = startIndex.inc()
+            while (height[startIndex] <= startPoint) {
+                stepped = true
+                startIndex = startIndex.inc()
+                if (endIndex > startIndex) break
+                println("inc start index $startIndex")
+            }
         }
-
-        println("biggest area : $biggestArea")
+        println("biggest area : $biggestArea startIndex = $startIndex endIndex = $endIndex")
+        if (!stepped) break
     }
 
     return biggestArea
