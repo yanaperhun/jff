@@ -25,7 +25,7 @@ import kotlin.math.min
 
 fun maxArea(height: IntArray): Int {
     val len = height.size
-    val range = len / 2
+
     var startIndex = 0
     var endIndex = len - 1
 
@@ -36,36 +36,28 @@ fun maxArea(height: IntArray): Int {
         val endPoint = height[endIndex]
 
         val widthArea = endIndex - startIndex
-        val heightArea = min(height[startIndex], height[endIndex])
+        val heightArea = min(startPoint, endPoint)
 
         if (widthArea * heightArea > biggestArea) {
             biggestArea = widthArea * heightArea
         }
 
         var stepped = false
-        if (height[startIndex] >=  height[endIndex]) {
-            println("==>")
-            while (height[endIndex] <= endPoint && endIndex > startIndex) {
+        if (startPoint >= endPoint) {
+            while (height[endIndex] <= endPoint) {
                 stepped = true
                 endIndex = endIndex.dec()
                 if (endIndex > startIndex) break
-                println("dec end index $endIndex")
             }
         } else {
             while (height[startIndex] <= startPoint) {
                 stepped = true
                 startIndex = startIndex.inc()
                 if (endIndex > startIndex) break
-                println("inc start index $startIndex")
             }
         }
-        println("biggest area : $biggestArea startIndex = $startIndex endIndex = $endIndex")
         if (!stepped) break
     }
 
     return biggestArea
-}
-
-fun calcArea(width: Int, height: Int) {
-
 }
