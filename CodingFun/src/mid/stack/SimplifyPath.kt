@@ -1,5 +1,7 @@
 package mid.stack
 
+import java.util.Stack
+
 /**
  * Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
  *
@@ -33,5 +35,18 @@ package mid.stack
  */
 
 fun simplifyPath(path: String): String {
-    return ""
+    val stack = Stack<String>()
+
+    val splitted = path.split("/")
+    splitted.forEach {
+        if (it == "..") {
+            if (stack.isNotEmpty()) stack.pop()
+        }
+        if (it != ".." && it.isNotEmpty() && it != ".") stack.add(it)
+    }
+
+    var result = ""
+    if (stack.isEmpty()) return "/"
+    stack.forEach { if (it.isNotEmpty()) result = "$result/$it" }
+    return result
 }
