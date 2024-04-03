@@ -42,10 +42,6 @@ fun canConstruct(ransomNote: String, magazine: String): Boolean {
             return false
         }
     }
-//    ransomNoteHashMap.keys.forEach {
-//        println("Symbol $it + ransomNoteHashMap: ${ransomNoteHashMap.getOrDefault(it, -2)}; magazineHashMap: ${magazineHashMap.getOrDefault(it, -1)}" )
-//        if (ransomNoteHashMap.getOrDefault(it, -1) > magazineHashMap.getOrDefault(it, -2)) return false
-//    }
     return true
 
 }
