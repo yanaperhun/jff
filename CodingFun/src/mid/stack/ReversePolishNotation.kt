@@ -1,5 +1,7 @@
 package mid.stack
 
+import java.util.*
+
 /**
  * You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
  *
@@ -37,7 +39,16 @@ package mid.stack
  * = 17 + 5
  * = 22
  */
+class Solution {
+    val operators = setOf('+', '+', '-', '*', '/')
 
-fun evalRPN(tokens: Array<String>): Int {
-    return 0
+    init {
+        println(operators.toString())
+    }
+//    fun evalRPN(tokens: Array<String>): Int {
+//        val tokensStack = Stack<String>()
+//        tokens.forEach { tokensStack.add() }
+//        return 0
+//    }
 }
+
