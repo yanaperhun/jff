@@ -1,5 +1,7 @@
 package easy.hashmap
 
+import java.util.Arrays
+
 /**
  * Given a pattern and a string s, find if s follows the same pattern.
  *
@@ -37,7 +39,7 @@ fun wordPattern(pattern: String, s: String): Boolean {
 
     words.forEachIndexed { index, str ->
         if (sHashMap.containsKey(str)) {
-            val array = sHashMap.getOrDefault(s, mutableListOf())
+            val array = sHashMap.getOrDefault(str, mutableListOf())
             array.add(index)
             sHashMap[str] = array
         } else {
@@ -46,10 +48,10 @@ fun wordPattern(pattern: String, s: String): Boolean {
     }
     pattern.toCharArray().forEachIndexed { index, char ->
         val string = words[index]
-        val charArray = pHashMap[char]
-        val stringArray = sHashMap[string]
+        val charArray = pHashMap[char]?.toIntArray()
+        val stringArray = sHashMap[string]?.toIntArray()
 
-        if (charArray != stringArray) return false
+        if (!charArray.contentEquals(stringArray)) return false
     }
     return true
 }
