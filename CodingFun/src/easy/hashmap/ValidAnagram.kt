@@ -32,11 +32,6 @@ fun isAnagram(s: String, t: String): Boolean {
         sHashMap[s[i]] = sCount.inc()
         tHashMap[t[i]] = tCount.inc()
     }
-//    val sKeys = sHashMap.keys.toCharArray()
-//    val tKeys = tHashMap.keys.toCharArray()
-//    sKeys.sort()
-//    tKeys.sort()
-//    if (!sKeys.contentEquals(tKeys)) return false
 
     sHashMap.keys.forEach {
         if (!tHashMap.containsKey(it)) return false
