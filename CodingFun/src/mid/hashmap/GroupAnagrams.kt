@@ -58,7 +58,6 @@ fun groupAnagrams(strs: Array<String>): List<List<String>> {
 }
 
 fun isAnagram1(s: String, t: String): Boolean {
-
     if (s.length != t.length) return false
     val sHashMap = hashMapOf<Char, Int>()
     val tHashMap = hashMapOf<Char, Int>()
